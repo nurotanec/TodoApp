@@ -1,6 +1,10 @@
 export const auth = () => {
   const username = prompt('Введите имя пользователя');
-  return username.length > 0 ? username : auth();
+  if (username.trim()) {
+    return username.trim();
+  } else {
+    return auth();
+  }
 };
 
 export const whichID = target =>
