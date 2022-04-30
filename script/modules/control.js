@@ -38,8 +38,10 @@ export const tableControl = (table, username) => {
   table.tbody.addEventListener('click', e => {
     const target = e.target;
     if (target.closest('.btn-danger')) {
-      removeStorage(username, parseInt(whichID(target)));
-      renderList(username, table);
+      if (confirm('Хотите удалить задачу?')) {
+        removeStorage(username, parseInt(whichID(target)));
+        renderList(username, table);
+      }
     } else if (target.closest('.btn-success')) {
       endTask(username, parseInt(whichID(target)));
       renderList(username, table);
